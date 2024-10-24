@@ -1,0 +1,2 @@
+{user_id=1, username=admin_user1, password=admin123, email=admin@example.com, contact_number=1234567890, role=admin}
+{user_id=2, username=admin_user2, password=admin123, email=admin@example.com, contact_number=1234567890, role=admin}
