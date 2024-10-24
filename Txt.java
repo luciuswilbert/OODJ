@@ -11,7 +11,8 @@ class Txt{
         // Attach a file to FileReader  
         File fr = new File(file);
 
-        // Wrap FileReader in Scanner for efficient reading
+        // The Scanner can take different types of inputs, like System.in (for reading user input) 
+        // or a File object (for reading from a file).
         Scanner scan = new Scanner(fr);
 
         // Create a empty List of Dictionary
@@ -25,28 +26,43 @@ class Txt{
             String line = scan.nextLine().trim(); 
             
 
-            // Remove curly braces and split by comma
-            line = line.replaceAll("[{}]", ""); // Remove {}
-            String[] pairs = line.split(","); // Split by comma
+            // Remove {}
+            line = line.replaceAll("[{}]", ""); 
+            //After this step, the input string becomes [a=1, b=c].
+
+            // Split by comma
+            String[] pairs = line.split(","); 
+            // After this step, you get an array: ["a=1", "b=c"].
 
 
             // Create a dictionary for the user
             Map<String, Object> user = new LinkedHashMap<>();
-            Object value;
+
+            // for each pair in pairs
             for (String pair : pairs) {
-                // Split each pair by equal
+                // pair = "a=1"
+                // Split by =, keyValue = ["a", "1"]
                 String[] keyValue = pair.split("=");
-                if (keyValue.length == 2) {
-                    String key = keyValue[0].trim().replaceAll("\"", ""); // Remove quotes
-                    if (key.equals("user_id")){
-                        value = Integer.valueOf(keyValue[1].trim().replaceAll("\"", ""));
-                    }
-                    else{
-                        value = keyValue[1].trim().replaceAll("\"", ""); // Remove quotes
+                Object value; // Declare the value variable
+
+                try {
+                    // Check whether it is only two value in keyValue list
+                    if (keyValue.length == 2) {
+                        String key = keyValue[0].trim();
+                        if (key.equals("user_id")){
+                            value = Integer.valueOf(keyValue[1].trim());
+                        }
+                        else{
+                            value = keyValue[1].trim();
+                        }
+                        user.put(key, value); // Add to the dictionary
                     }
                     
-                    user.put(key, value); // Add to the dictionary
+
+                } catch (NumberFormatException e) {
+                    System.out.println(e);
                 }
+                
             }
 
             // Add the user dictionary to the users list
