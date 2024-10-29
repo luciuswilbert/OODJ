@@ -14,6 +14,7 @@ public class Supplier {
         this.supName = supName;
         this.supEmail = supEmail;
         this.supConNum = supConNum;
+        System.out.println("HI!")
     }
     
     public String getSupId() {
