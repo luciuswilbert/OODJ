@@ -1,4 +1,9 @@
-package OODJassignment;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package javaassignment;
+
 public class Supplier {
     private int supId;
     private String supName;
@@ -14,6 +19,7 @@ public class Supplier {
         this.supName = supName;
         this.supEmail = supEmail;
         this.supConNum = supConNum;
+        System.out.println("HiIIIII!");
     }
     
     public String getSupId() {
@@ -48,3 +54,4 @@ public class Supplier {
         this.supConNum = supConNum;
     }
 }
+
