@@ -1,0 +1,38 @@
+checking_status: Status of existing checking account CATEGORICAL
+duration: Duration of loans in months INT
+credit_history: Type of credit history whether credits taken, paid back duly, delays or critical accounts CATEGORICAL
+purpose: purpose of taking the credit CATEGORICAL
+credit_amount: amount of credit taken DECIMAL2
+savings_status: status of savings account/bond by amount of savings CATEGORICAL
+employment: present employment, in number of years CATEGORICAL
+instalment_commitment: instalment rate in percentage of disposable income DECIMAL1/2
+personal status: sex and marital status data CATEGORICAL
+other_parties: other debtors / guarantors CATEGORICAL
+residence_since: number of years since kick off of the residence of the country 驱逐出境 DECIMAL1
+property_magnitude: type of property that customers have such as car, house or others CATEGORICAL
+age: age of customers INT
+other_payment_plans: type of other payment plan CATEGORICAL
+housing: type of housing plan of customers whether own, rent, for free CATEGORICAL
+existing_credits: number of existing credit that customers have INT
+job: type of job that customers held CATEGORICAL
+num_dependents: how many dependents that customers have INT
+own_telephone: status of customers whether use his own telephone or not CATEGORICAL
+foreign_worker: status of customers whether are foreign worker or not CATEGORICAL
+class: credit class of customers whether good or bad. CATEGORICAL
+
+4, 10
+1 Grp -> 1 hypothesis
+1 hypothesis -> Multiple objectives
+1 objective -> min 1 variables
+the more complex the objective, the higher mark
+
+the dataset provided is considered small,
+big = more than millions of records
+medium = tens of thousands
+
+If MACR = can removed, otherwise cannot
+
+X -> can removed
+own_telephone & foreign_worker -> Binomial, can change to true and false
+no known [property] == NA/valid value?
+class -> dependent variable, the remaining is independent
