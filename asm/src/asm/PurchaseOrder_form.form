@@ -220,14 +220,14 @@
     <Component class="javax.swing.JComboBox" name="CB_order_status">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(status_options)" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(purchaseOrder.getPo_stat_enum())" type="code"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CB_order_statusActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String[] status_options = Arrays.copyOf(purchaseOrder.getPo_stat_enum(), purchaseOrder.getPo_stat_enum().length +1);&#xa;status_options[status_options.length -1] = &quot;&quot;;"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="//String[] status_options = Arrays.copyOf(purchaseOrder.getPo_stat_enum(), purchaseOrder.getPo_stat_enum().length +1);&#xa;//status_options[status_options.length -1] = &quot;&quot;;"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
