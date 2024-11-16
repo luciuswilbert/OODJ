@@ -1,3 +1,4 @@
-{po_id=po0002, pr_id=pr002, supplier_id=sp002, order_date=04-Nov-2024, delivery_date=null, po_status=APPROVED, payment_status=NULL, approved_by=null, approval_date=null}
-{po_id=po0003, pr_id=pr003, supplier_id=sp003, order_date=04-Nov-2024, delivery_date=null, po_status=PENDING, payment_status=NULL, approved_by=null, approval_date=null}
-{po_id=po0004, pr_id=pr004, supplier_id=sp004, order_date=04-Nov-2024, delivery_date=null, po_status=REJECTED, payment_status=NULL, approved_by=null, approval_date=null}
+{po_id=PO0001, pr_id=PR0001, supplier_id=SUP0001, order_date=15-Nov-2024, po_status=PENDING, created_by=PM0001, approved_by=null, approval_date=null}
+{po_id=PO0002, pr_id=PR0002, supplier_id=SUP0002, order_date=15-Nov-2024, po_status=PENDING, created_by=PM0001, approved_by=null, approval_date=null}
+{po_id=PO0003, pr_id=PR0003, supplier_id=SUP0003, order_date=15-Nov-2024, po_status=APPROVED, created_by=PM0001, approved_by=FM0003, approval_date=15-Nov-2024}
+{po_id=PO0004, pr_id=PR0003, supplier_id=SUP0003, order_date=15-Nov-2024, po_status=PENDING, created_by=PM0002, approved_by=null, approval_date=null}
