@@ -14,9 +14,9 @@ public class Asm {
 //            purchaseOrder po1 = purchaseOrder.getAll_po().get("po0002");
 //            System.out.println(po1.getSupplier_id());
             purchaseOrder po1, po2, po3;
-            po1 = new purchaseOrder("PR0001", "SUP0001", "Sam");
-            po2 = new purchaseOrder("PR0001", "SUP0001", "Sam");
-            po3 = new purchaseOrder("PR0001", "SUP0001", "Sam");
+            po1 = new purchaseOrder("PR0001", "SUP0001", "PM0001");
+            po2 = new purchaseOrder("PR0002", "SUP0002", "PM0001");
+            po3 = new purchaseOrder("PR0003", "SUP0001", "PM0001");
 //            System.out.println(po2.getPr_id());
         } catch (ParseException | IOException ex) {
             Logger.getLogger(Asm.class.getName()).log(Level.SEVERE, null, ex);
