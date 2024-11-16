@@ -3,10 +3,7 @@ import java.io.File; // Import the File class
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException; // Import the IOException class to handle errors
-import java.lang.reflect.Field;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.GregorianCalendar;
 
 public class txt{
 
