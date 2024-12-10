@@ -27,6 +27,7 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
          this.permission=permission;
          this.creator=creator;
          initComponents();
+         settingPermission();
          BTN_update.setVisible(false);
          BTN_clear.setVisible(false);
          BTN_delete.setVisible(false);
@@ -81,7 +82,7 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
         TF_created = new javax.swing.JTextField();
         DATE_expected_delivery = new com.toedter.calendar.JDateChooser();
 
-        setPreferredSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(400, 500));
 
         BTN_clear.setText("Clear");
         BTN_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -127,10 +128,13 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
         CB_delivery_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDING", "SHIPPED", "DELIVERED" }));
 
         TF_pi_id.setEditable(false);
+        TF_pi_id.setFocusable(false);
 
         TF_po_id.setEditable(false);
+        TF_po_id.setFocusable(false);
 
         TF_sp_id.setEditable(false);
+        TF_sp_id.setFocusable(false);
 
         TF_created.setEditable(false);
         TF_created.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +234,7 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CB_delivery_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,6 +300,7 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), 
                                        "ERROR", JOptionPane.ERROR_MESSAGE);
             }
+            clearPanel();
             pi_table.setModel(purchaseInvoice.populateTable(permission, creator));
        }
     }//GEN-LAST:event_BTN_updateActionPerformed
@@ -322,13 +327,43 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
         CB_pi_status.setSelectedItem(selected_pi.getPi_status());
         CB_delivery_status.setSelectedItem(selected_pi.getDelivery_status());
         
-        if ("DELIVERED".equals(selected_pi.getDelivery_status())){
-            DATE_expected_delivery.setEnabled(false);
-            DATE_actual_delivery.setEnabled(false);
-            CB_pi_status.setEnabled(false);
-            CB_delivery_status.setEnabled(false);
+        if (permission == editPermission.edit){
+            if ("PAID".equals(selected_pi.getPi_status())){
+                DATE_expected_delivery.setEnabled(false);
+                DATE_actual_delivery.setEnabled(true);
+                CB_pi_status.setEnabled(false);
+                CB_delivery_status.setEnabled(true);
+                BTN_update.setVisible(false);
+                BTN_delete.setVisible(false);
+            } else {
+                DATE_expected_delivery.setEnabled(true);
+                DATE_actual_delivery.setEnabled(true);
+                CB_pi_status.setEnabled(true);
+                CB_delivery_status.setEnabled(true);
+                BTN_update.setVisible(true);
+                BTN_delete.setVisible(true);
+            }
+        } else {
+            if ("DELIVERED".equals(selected_pi.getDelivery_status())){
+                DATE_expected_delivery.setEnabled(false);
+                DATE_actual_delivery.setEnabled(false);
+                CB_pi_status.setEnabled(false);
+                CB_delivery_status.setEnabled(false);
+                BTN_update.setVisible(false);
+                BTN_delete.setVisible(false);
+            } else {
+                DATE_expected_delivery.setEnabled(false);
+                DATE_actual_delivery.setEnabled(true);
+                CB_pi_status.setEnabled(false);
+                CB_delivery_status.setEnabled(true);
+                BTN_update.setVisible(true);
+                BTN_delete.setVisible(false);
+            }
         }
-    } //double check
+        
+        BTN_clear.setVisible(true);
+                
+    }
     
     private boolean checkChanges(){
         boolean expected_date;
@@ -352,8 +387,7 @@ public class purchaseInvoice_form extends javax.swing.JPanel {
             actual_date = !selected_pi.getActual_date().getTime().equals(DATE_actual_delivery.getDate());
         }
         
-        return !TF_sp_id.getText().equals(selected_pi.getSupplier_id()) ||
-                expected_date || actual_date ||
+        return  expected_date || actual_date ||
                 !TF_created.getText().equals(selected_pi.getCreated_by()) || created_date ||
                 !CB_pi_status.getSelectedItem().equals(selected_pi.getPi_status())||
                 !CB_delivery_status.getSelectedItem().equals(selected_pi.getDelivery_status());

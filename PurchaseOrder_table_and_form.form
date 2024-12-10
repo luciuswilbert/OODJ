@@ -201,7 +201,7 @@
             <Component class="javax.swing.JTable" name="po_table">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="purchaseOrder.populateTable(editPermission.edit,&quot;FM001&quot;)" type="code"/>
+                  <Connection code="purchaseOrder.populateTable(editPermission.approve,&quot;FM001&quot;)" type="code"/>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>

@@ -254,7 +254,7 @@ public class PurchaseOrder_table_and_form extends javax.swing.JPanel {
             }
         });
 
-        po_table.setModel(purchaseOrder.populateTable(editPermission.edit,"FM001"));
+        po_table.setModel(purchaseOrder.populateTable(editPermission.approve,"FM001"));
         po_table.setFillsViewportHeight(true);
         po_table.setMaximumSize(new java.awt.Dimension(1000, 250));
         po_table.setPreferredSize(new java.awt.Dimension(1000, 250));

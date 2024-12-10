@@ -44,7 +44,7 @@ public class purchaseInvoice {
     cur_pi_num += 1;
     this.po_id=po_id;
     this.supplier_id=supplier_id;
-    expected_date=new GregorianCalendar(); //or null
+    expected_date=null;
     actual_date=null;
     this.created_by=created_by;
     this.created_date=new GregorianCalendar();
@@ -315,16 +315,18 @@ public class purchaseInvoice {
         }
         };
         
-        // ArrayList<purchaseOrder> po_list = new ArrayList<purchaseOrder>(all_po.values());
-        List<purchaseInvoice> pi_list;
+        List<purchaseInvoice> pi_list = null;
         
         if (permission == editPermission.edit){
             pi_list = all_pi.values().stream()
-            //.filter(pi -> pi.getCreated_by().equals(creator))
+            .filter(pi -> pi.getCreated_by().equals(creator))
             .toList();
-        } else {
-            pi_list = new ArrayList(all_pi.values());
-        }
+        } else if (permission == editPermission.approve){
+            pi_list = all_pi.values().stream()
+            .filter(pi -> pi.getPi_status().equals("PAID"))
+            .toList();
+            System.out.println("approve"+pi_list);
+        } 
                    
         // Debugging: Check if getAll_po() returns any records
         System.out.println("Number of purchase invoice in system: " + all_pi.size());
