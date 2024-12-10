@@ -44,7 +44,7 @@ public class purchaseInvoice {
     cur_pi_num += 1;
     this.po_id=po_id;
     this.supplier_id=supplier_id;
-    expected_date=null;
+    expected_date=new GregorianCalendar();
     actual_date=null;
     this.created_by=created_by;
     this.created_date=new GregorianCalendar();
