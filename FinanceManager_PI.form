@@ -41,6 +41,9 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="FM_user">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//profile_panel = new asm.Profile_form(finance);&#xa;//FM_user.add(purchaseOrder_panel);&#xa;//&#xa;//FM_user.setLayout(new BorderLayout());&#xa;//FM_user.add(purchaseOrder_panel, BorderLayout.CENTER);"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="User">
@@ -111,7 +114,7 @@
         </Container>
         <Container class="javax.swing.JPanel" name="FM_pi">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="purchaseInvoice_panel = new asm.purchaseInvoice_table_and_form(editPermission.edit, &quot;FM0001&quot;);&#xa;FM_pi.add(purchaseInvoice_panel);&#xa;&#xa;FM_pi.setLayout(new BorderLayout());&#xa;FM_pi.add(purchaseInvoice_panel, BorderLayout.CENTER);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="purchaseInvoice_panel = new asm.purchaseInvoice_table_and_form(editPermission.approve, &quot;FM0001&quot;);&#xa;FM_pi.add(purchaseInvoice_panel);&#xa;&#xa;FM_pi.setLayout(new BorderLayout());&#xa;FM_pi.add(purchaseInvoice_panel, BorderLayout.CENTER);"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">

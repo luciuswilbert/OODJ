@@ -36,7 +36,9 @@ public class purchaseInvoice {
     private GregorianCalendar created_date;
     private pi_stat pi_status;
     private delivery_stat delivery_status;
-    //want amount ma
+    private String item_id;
+    private int quantity_requested;
+    private double price;
     
     public purchaseInvoice(String po_id, String supplier_id,String created_by)throws IOException{
     String id_num = String.format("%0"+id_paddingSize+"d",+cur_pi_num+1);
@@ -44,19 +46,52 @@ public class purchaseInvoice {
     cur_pi_num += 1;
     this.po_id=po_id;
     this.supplier_id=supplier_id;
-    expected_date=new GregorianCalendar();
+    expected_date=null;
     actual_date=null;
     this.created_by=created_by;
     this.created_date=new GregorianCalendar();
     pi_status=pi_stat.NOT_PAID;
     delivery_status = delivery_stat.PENDING;
     
+    List<Map<String,String>> itemList = txt.Read("item.txt"); //item file name
+    List<Map<String,String>> PR = txt.Read("purchase_requisition.txt"); //purchase requisition file name
+    List<Map<String,String>> PO = txt.Read("Purchase_Order"); //purchase order file name
+    
+    Map<String,Double> itemPrices = new LinkedHashMap<>();
+    Map<String,String> pr_po = new LinkedHashMap<>();
+    
+    for(Map<String,String> item :itemList){
+        itemPrices.put(item.get("itemID"),Double.valueOf(item.get("unitPrice")));
+    }
+    
+    for (Map<String,String> po:PO){
+        if(po.get("po_id").equals(po_id)){
+            pr_po.put(po.get("pr_id"), po.get("po_id"));
+        }
+    }
+    
+    for (Map<String,String> pr:PR){
+        String pr_id=pr.get("requisitionId");
+        if(pr_po.containsKey(pr_id)){
+            this.item_id=pr.get("itemId");
+            System.out.println(pr.get("itemId"));
+            this.quantity_requested=Integer.parseInt(pr.get("quantityRequested"));
+            
+            if(itemPrices.containsKey(item_id)){
+                this.price=itemPrices.get(item_id)*quantity_requested;
+            } else {
+                System.out.println("no correct itemid");
+            }
+        }
+    }
+    
+    
     this.add_new_record();
     Map<String,Object> record_in_txt = this.convertDict();
     txt.Write("Purchase_Invoice", record_in_txt, true);
     }
     
-    public purchaseInvoice (String pi_id,String po_id, String supplier_id, GregorianCalendar expected_date, GregorianCalendar actual_date,String created_by,GregorianCalendar created_date,pi_stat pi_status,delivery_stat delivery_status){
+    public purchaseInvoice (String pi_id,String po_id, String supplier_id, GregorianCalendar expected_date, GregorianCalendar actual_date,String created_by,GregorianCalendar created_date,pi_stat pi_status,delivery_stat delivery_status, String item_id, int quantity_requested, double price){
         this.pi_id=pi_id;
         this.po_id=po_id;
         this.supplier_id=supplier_id;
@@ -66,6 +101,9 @@ public class purchaseInvoice {
         this.created_date=created_date;
         this.pi_status=pi_status;
         this.delivery_status=delivery_status;
+        this.item_id=item_id;
+        this.quantity_requested=quantity_requested;
+        this.price=price;
         
         this.add_new_record();
     }
@@ -78,13 +116,31 @@ public class purchaseInvoice {
     public void editInvoice (String supplier_id, GregorianCalendar expected_date, GregorianCalendar actual_date,String created_by,GregorianCalendar created_date,String pi_status,String delivery_status) throws IOException{
         this.supplier_id=supplier_id;
         this.expected_date=expected_date;
-        this.actual_date=actual_date; //maybe inventory can directly call this function?
+        this.actual_date=actual_date; 
         this.created_by=created_by;
         this.created_date=created_date;
         setPi_status(pi_status);
         setDelivery_status(delivery_status);
         
         rewriteFile();
+    }
+    
+    //update automatically for inventory (test)
+    public void updateInventory (String item_id,int quantity_requested) throws InvalidValue, IOException{
+        try{
+            List <Map<String,String>> items = txt.Read("item.txt");
+            for (Map<String,String> item:items){
+                String existingItemId = item.get("itemID");
+                if (existingItemId.equals(item_id)){
+                    int current_stock = Integer.parseInt(item.get("stockLevel"))+quantity_requested;
+                    item.put("stockLevel", Integer.toString(current_stock));
+                    txt.Write(items, "item.txt");
+                }
+            }
+        }
+        catch(java.lang.NullPointerException e){
+                System.out.println("No item");
+        }
     }
     
     public static void rewriteFile() throws IOException{
@@ -140,7 +196,7 @@ public class purchaseInvoice {
     
     public String getExpected_date_str() {
         SimpleDateFormat formattedDate = new SimpleDateFormat("dd-MMM-yyyy");
-        return formattedDate.format(expected_date.getTime());
+        return expected_date == null? "null": formattedDate.format(expected_date.getTime());
     }
 
     public void setExpected_date(GregorianCalendar expected_date) {
@@ -190,7 +246,7 @@ public class purchaseInvoice {
         pi_stat pi_status_obj = switch(pi_status_str){
             case "NOT PAID" -> pi_stat.NOT_PAID;
             case "PAID" -> pi_stat.PAID;
-            default -> pi_stat.NOT_PAID; ///more enum stuff
+            default -> pi_stat.NOT_PAID;
         };
         
         this.pi_status=pi_status_obj;
@@ -213,6 +269,32 @@ public class purchaseInvoice {
         return Arrays.stream(pi_stat.values()).map(Enum::name).toArray(String[]::new); 
         //getEnumNames(po_stat.values());
     } 
+
+    public String getItem_id() {
+        return item_id;
+    }
+
+    public void setItem_id(String item_id) {
+        this.item_id = item_id;
+    }
+
+    public int getQuantity_requested() {
+        return quantity_requested;
+    }
+
+    public void setQuantity_requested(int quantity_requested) {
+        this.quantity_requested = quantity_requested;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    
     
     public static void read_pi(String file){
         try{
@@ -264,19 +346,21 @@ public class purchaseInvoice {
             
                 DateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
                 
-                Date date = formatter.parse(dict.get("expected_date"));  //expected date should be null too
-                expected_date = new GregorianCalendar();
-                expected_date.setTime(date);
+                if (!"null".equals(dict.get("expected_date"))){
+                    Date date = formatter.parse(dict.get("expected_date"));
+                    expected_date = new GregorianCalendar();
+                    expected_date.setTime(date);
+                }
                 
                 if (!"null".equals(dict.get("actual_date"))){
-                    date = formatter.parse(dict.get("actual_date"));
+                    Date date = formatter.parse(dict.get("actual_date"));
                     actual_date = new GregorianCalendar();
                     actual_date.setTime(date);
                 } 
                 
                 Date date2 = formatter.parse(dict.get("created_date"));
                 created_date = new GregorianCalendar();
-                created_date.setTime(date);
+                created_date.setTime(date2);
                 
                 pi_status = switch (dict.get("pi_status")) {
                     case "NOT PAID" -> pi_stat.NOT_PAID;
@@ -289,10 +373,14 @@ public class purchaseInvoice {
                     case "SHIPPED" -> delivery_stat.SHIPPED;
                     default -> delivery_stat.PENDING;
                 };
+                
+               int quantity_requested = Integer.parseInt(dict.get("quantity_requested"));
+               double price = Double.parseDouble(dict.get("price"));
                               
                 purchaseInvoice instance = new purchaseInvoice(dict.get("pi_id"), 
                     dict.get("po_id"), dict.get("supplier_id"), expected_date, 
-                    actual_date, dict.get("created_by"), created_date, pi_status,delivery_status);
+                    actual_date, dict.get("created_by"), created_date, pi_status,delivery_status,dict.get("item_id"),quantity_requested,price
+                    );
                
                 all_pi.put(dict.get("pi_id"), instance);
 
@@ -306,7 +394,7 @@ public class purchaseInvoice {
     
     public static TableModel populateTable(editPermission permission, String creator) {
         DefaultTableModel model = new DefaultTableModel(
-            new Object[] { "Purchase Invoice ID", "Purchase Order ID", "Supplier ID", "Expected Delivery Date", "Actual Delivery Date", "Created By", "Date", "Payment Status","Delivery Status"}, 0
+            new Object[] { "Purchase Invoice ID", "Purchase Order ID", "Supplier ID", "Expected Delivery Date", "Actual Delivery Date", "Created By", "Date", "Payment Status","Delivery Status","Price"}, 0
         ){
             @Override
         public boolean isCellEditable(int row, int column) {
@@ -343,7 +431,8 @@ public class purchaseInvoice {
                 pi.getCreated_by(),
                 pi.getCreated_date_str(),
                 pi.getPi_status(),
-                pi.getDelivery_status()
+                pi.getDelivery_status(),
+                pi.getPrice()
             });
         }
 

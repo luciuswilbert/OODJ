@@ -8,6 +8,7 @@ import asm.utilities.editPermission;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -65,8 +66,6 @@ public class purchaseInvoice_table_and_form extends javax.swing.JPanel {
         } else {
             BTN_arrived.setVisible(false);
             BTN_pay.setVisible(true);
-            CH_deliver.setVisible(false);
-            CB_deliver_fil.setVisible(false);
         }
     }
     
@@ -103,7 +102,7 @@ public class purchaseInvoice_table_and_form extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(880, 600));
 
-        pi_table.setModel(purchaseInvoice.populateTable(editPermission.edit, "FM0001"));
+        pi_table.setModel(purchaseInvoice.populateTable(editPermission.approve, "FM0001"));
         pi_table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pi_tableMouseClicked(evt);
@@ -257,7 +256,7 @@ public class purchaseInvoice_table_and_form extends javax.swing.JPanel {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        purchaseInvoice_form = new asm.purchaseInvoice_form(pi_table, editPermission.edit, "FM0001");
+        purchaseInvoice_form = new asm.purchaseInvoice_form(pi_table, editPermission.approve, "FM0001");
         pi_scroll_panel.setViewportView(purchaseInvoice_form);
         addChangeListener(TF_id_fil, e -> update_id_filter(true));
         CB_id_fil.addItemListener(
@@ -298,6 +297,16 @@ public class purchaseInvoice_table_and_form extends javax.swing.JPanel {
         int row=pi_table.getSelectedRow();
         String pi_id=pi_table.getValueAt(row, pi_table.getColumn("Purchase Invoice ID").getModelIndex()).toString();
         purchaseInvoice_form.populateForm(pi_id);
+        if (pi_table.getValueAt(row, pi_table.getColumn("Delivery Status").getModelIndex()).toString().equals("DELIVERED")){
+            BTN_arrived.setVisible(false);
+        } else {
+            BTN_arrived.setVisible(true);
+        }
+        if (pi_table.getValueAt(row, pi_table.getColumn("Payment Status").getModelIndex()).toString().equals("PAID")){
+            BTN_pay.setVisible(false);
+        } else {
+            BTN_pay.setVisible(true);
+        }
     }//GEN-LAST:event_pi_tableMouseClicked
 
     private void BTN_payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_payActionPerformed
@@ -493,6 +502,13 @@ public class purchaseInvoice_table_and_form extends javax.swing.JPanel {
             
             selected_pi.editInvoice(selected_pi.getSupplier_id(),selected_pi.getExpected_date(),selected_pi.getActual_date(),selected_pi.getCreated_by(),selected_pi.getCreated_date(),selected_pi.getPi_status(),selected_pi.getDelivery_status());
             pi_table.setModel(purchaseInvoice.populateTable(permission, creator));
+            try {
+                System.out.println(selected_pi.getItem_id());
+                selected_pi.updateInventory(selected_pi.getItem_id(),selected_pi.getQuantity_requested());
+                purchaseInvoice_form.clearPanel();
+            } catch (InvalidValue ex) {
+                Logger.getLogger(purchaseInvoice_table_and_form.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IOException ex) {
             Logger.getLogger(purchaseInvoice_table_and_form.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -123,7 +123,7 @@
   <SubComponents>
     <Container class="javax.swing.JScrollPane" name="pi_scroll_panel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="purchaseInvoice_form = new asm.purchaseInvoice_form(pi_table, editPermission.edit, &quot;FM0001&quot;);&#xa;pi_scroll_panel.setViewportView(purchaseInvoice_form);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="purchaseInvoice_form = new asm.purchaseInvoice_form(pi_table, editPermission.approve, &quot;FM0001&quot;);&#xa;pi_scroll_panel.setViewportView(purchaseInvoice_form);"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -142,7 +142,7 @@
             <Component class="javax.swing.JTable" name="pi_table">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="purchaseInvoice.populateTable(editPermission.edit, &quot;FM0001&quot;)" type="code"/>
+                  <Connection code="purchaseInvoice.populateTable(editPermission.approve, &quot;FM0001&quot;)" type="code"/>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>

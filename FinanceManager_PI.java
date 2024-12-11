@@ -6,6 +6,7 @@ package asm;
 
 import asm.utilities.editPermission;
 import java.awt.BorderLayout;
+import javax.swing.table.DefaultTableModel;
 
 public class FinanceManager_PI extends javax.swing.JFrame {
 
@@ -18,6 +19,8 @@ public class FinanceManager_PI extends javax.swing.JFrame {
     }
     private asm.PurchaseOrder_table_and_form purchaseOrder_panel;
     private asm.purchaseInvoice_table_and_form purchaseInvoice_panel;
+    private asm.Profile_form profile_panel;
+    DefaultTableModel itemModel=new DefaultTableModel();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -45,6 +48,11 @@ public class FinanceManager_PI extends javax.swing.JFrame {
         );
 
         FinanceManager.addTab("User", FM_user);
+        //profile_panel = new asm.Profile_form(finance);
+        //FM_user.add(purchaseOrder_panel);
+        //
+        //FM_user.setLayout(new BorderLayout());
+        //FM_user.add(purchaseOrder_panel, BorderLayout.CENTER);
 
         javax.swing.GroupLayout FM_inventoryLayout = new javax.swing.GroupLayout(FM_inventory);
         FM_inventory.setLayout(FM_inventoryLayout);
@@ -89,7 +97,7 @@ public class FinanceManager_PI extends javax.swing.JFrame {
         );
 
         FinanceManager.addTab("Puchase Invoice", FM_pi);
-        purchaseInvoice_panel = new asm.purchaseInvoice_table_and_form(editPermission.edit, "FM0001");
+        purchaseInvoice_panel = new asm.purchaseInvoice_table_and_form(editPermission.approve, "FM0001");
         FM_pi.add(purchaseInvoice_panel);
 
         FM_pi.setLayout(new BorderLayout());
