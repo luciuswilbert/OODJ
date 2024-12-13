@@ -6,7 +6,6 @@ package asm;
 
 import asm.utilities.editPermission;
 import java.awt.BorderLayout;
-import javax.swing.table.DefaultTableModel;
 
 public class FinanceManager_PI extends javax.swing.JFrame {
 
@@ -20,7 +19,6 @@ public class FinanceManager_PI extends javax.swing.JFrame {
     private asm.PurchaseOrder_table_and_form purchaseOrder_panel;
     private asm.purchaseInvoice_table_and_form purchaseInvoice_panel;
     private asm.Profile_form profile_panel;
-    DefaultTableModel itemModel=new DefaultTableModel();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
