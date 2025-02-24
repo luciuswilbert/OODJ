@@ -1,0 +1,3 @@
+{username=Sam1234@, password=Sam1234@, full_name=Samantha Tee, email=sam@gmail.com, contact_number=012-233 8888, role=purchase}
+{username=Deme1234, password=Deme1234@, full_name=Demtrius Koh, email=deme@gmail.com, contact_number=123 456 7788, role=purchase}
+{username=Shri1234, password=Shri1234@, full_name=Shrinivas Hoh, email=shri@gamil.com, contact_number=111 222 3333, role=admin}
