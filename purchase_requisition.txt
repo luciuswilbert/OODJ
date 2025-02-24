@@ -1,0 +1,12 @@
+{requisitionId=pr0001, requestorId=U0001, requestDate=23-Nov-2024, itemId=I0002, quantityRequested=110}
+{requisitionId=pr0002, requestorId=U0001, requestDate=23-Nov-2024, itemId=I0004, quantityRequested=11}
+{requisitionId=pr0003, requestorId=U0001, requestDate=23-Nov-2024, itemId=I0001, quantityRequested=100}
+{requisitionId=pr0004, requestorId=U0001, requestDate=04-Dec-2024, itemId=I0001, quantityRequested=2}
+{requisitionId=pr0005, requestorId=U0001, requestDate=05-Dec-2024, itemId=I0001, quantityRequested=100}
+{requisitionId=pr0006, requestorId=U0001, requestDate=05-Dec-2024, itemId=I0001, quantityRequested=10}
+{requisitionId=pr0007, requestorId=U0001, requestDate=05-Dec-2024, itemId=I0001, quantityRequested=10}
+{requisitionId=pr0008, requestorId=U0001, requestDate=07-Dec-2024, itemId=I0001, quantityRequested=1}
+{requisitionId=pr0009, requestorId=U0001, requestDate=07-Dec-2024, itemId=I0001, quantityRequested=10}
+{requisitionId=pr0010, requestorId=U0001, requestDate=07-Dec-2024, itemId=I0001, quantityRequested=50}
+{requisitionId=pr0011, requestorId=U0001, requestDate=07-Dec-2024, itemId=I0001, quantityRequested=30}
+{requisitionId=pr0012, requestorId=U0001, requestDate=07-Dec-2024, itemId=I0001, quantityRequested=90}

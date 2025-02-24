@@ -1,0 +1,12 @@
+{saleId=sl0001, itemId=I0001, saleDate=05-Dec-2024, quantitySold=65, creationDate=05-Dec-2024, creatorId=U0001, modifiedDate=05-Dec-2024, modifierId=null, modifyReason=null}
+{saleId=sl0002, itemId=I0002, saleDate=08-Dec-2024, quantitySold=10, creationDate=05-Dec-2024, creatorId=U0001, modifiedDate=05-Dec-2024, modifierId=null, modifyReason=null}
+{saleId=sl0005, itemId=I0003, saleDate=02-Dec-2024, quantitySold=22, creationDate=05-Dec-2024, creatorId=U0001, modifiedDate=07-Dec-2024, modifierId=null, modifyReason=null}
+{saleId=sl0006, itemId=I0003, saleDate=07-Dec-2024, quantitySold=90, creationDate=07-Dec-2024, creatorId=U0001, modifiedDate=07-Dec-2024, modifierId=null, modifyReason=null}
+{saleId=sl0007, itemId=I0004, saleDate=01-Dec-2024, quantitySold=60, creationDate=07-Dec-2024, creatorId=U0001, modifiedDate=07-Dec-2024, modifierId=null, modifyReason=Incorrect Quantity Sold}
+{saleId=sl0008, itemId=I0003, saleDate=01-Dec-2024, quantitySold=40, creationDate=07-Dec-2024, creatorId=U0001, modifiedDate=07-Dec-2024, modifierId=null, modifyReason=Incorrect item recorded}
+{saleId=sl0009, creationDate=07-Dec-2024, saleDate=01-Dec-2024, itemId=I0002, quantitySold=10, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}
+{saleId=sl0010, creationDate=07-Dec-2024, saleDate=06-Dec-2024, itemId=I0002, quantitySold=2, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}
+{saleId=sl0011, creationDate=07-Dec-2024, saleDate=06-Dec-2024, itemId=I0003, quantitySold=30, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}
+{saleId=sl0012, creationDate=07-Dec-2024, saleDate=01-Dec-2024, itemId=I0001, quantitySold=10, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}
+{saleId=sl0013, creationDate=07-Dec-2024, saleDate=02-Dec-2024, itemId=I0001, quantitySold=90, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}
+{saleId=sl0014, creationDate=07-Dec-2024, saleDate=07-Dec-2024, itemId=I0001, quantitySold=60, creatorId=U0001, modifiedDate=null, modifierId=null, modifyReason=null}

@@ -1,0 +1,6 @@
+{itemID=item000, itemName=Bottles, description=Pink Bottle, category=C, unitPrice=30.00, supplierID=Sup001, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-09}
+{itemID=item003, itemName=Bottles, description=Pink Bottlesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss, category=C, unitPrice=30.00, supplierID=Sup004, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-09}
+{itemID=item004, itemName=Bottle, description=Pink Bottle, category=C, unitPrice=30.00, supplierID=Sup004, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-09}
+{itemID=item005, itemName=Bottle, description=Pink Bottle, category=C, unitPrice=35.00, supplierID=Sup004, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-11}
+{itemID=item006, itemName=Bottle, description=Pink Bottle, category=C, unitPrice=35.00, supplierID=Sup001, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-09}
+{itemID=item007, itemName=Bottle, description=Pink Bottle, category=C, unitPrice=35.00, supplierID=Sup008, stockLevel=100, reorderLevel=20, itemEntryDate=2024-12-09}
